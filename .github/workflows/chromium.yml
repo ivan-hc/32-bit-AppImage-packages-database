@@ -17,8 +17,10 @@ jobs:
     - name: build
       if: always()
       run: |
+        sudo dpkg --add-architecture i386
         sudo apt update
-        sudo apt install libfuse2
+        sudo apt install libfuse2 libc6:i386 libncurses5:i386 libstdc++6:i386
+        sudo apt install multiarch-support
         wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/chromium
         chmod a+x ./chromium
         ./chromium
