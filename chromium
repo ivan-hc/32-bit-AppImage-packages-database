@@ -33,7 +33,7 @@ ingredients:
   packages:
     - chromium" >> recipe.yml;
 
-ARCH=i386 ./pkg2appimage ./recipe.yml;
+./pkg2appimage ./recipe.yml;
 
 # ...REPLACING THE EXISTING APPRUN WITH A CUSTOM ONE...
 rm -R -f ./$APP/$APP.AppDir/AppRun
