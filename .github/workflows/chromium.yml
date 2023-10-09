@@ -21,9 +21,13 @@ jobs:
         sudo apt update
         sudo apt install libfuse2 libfuse2:i386 libc6:i386 libncurses5:i386 libstdc++6:i386
         sudo apt install binutils-multiarch
+        sudo apt install distrobox
+        distrobox create --image debian32 docker.io/library/debian:stable-backports
+        distrobox-enter debian32 -- sudo apt update && sudo apt dist-upgrade
+        distrobox-enter debian32 -- sudo apt install binutils coreutils curl sed wget        
         wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/chromium
         chmod a+x ./chromium
-        ./chromium
+        distrobox-enter debian32 -- ./chromium
         mkdir dist
         mv *AppImage dist/
     - uses: gautamkrishnar/keepalive-workflow@v1
