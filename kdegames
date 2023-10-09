@@ -11,6 +11,7 @@ wget https://github.com/ivan-hc/pkg2appimage-32bit/releases/download/continuous/
 chmod a+x ./appimagetool ./pkg2appimage
 
 # CREATING THE APPIMAGE: APPDIR FROM A RECIPE...
+VERSION=$(echo $(wget -q https://packages.debian.org/stable/i386/kdegames/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=kdegames_).*(?=_i386)'))
 echo "app: kdegames
 binpatch: true
 
@@ -76,9 +77,5 @@ mv ./$APP.desktop ./$APP/$APP.AppDir
 
 # ...EXPORT THE APPDIR TO AN APPIMAGE!
 ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
-mkdir version
-mv ./$APP/kpat*.deb ./version/
-VERSION=$(ls ./version | head -1 | cut -c 6- | rev | cut -c 11- | rev)
-
 cd ..
-mv ./tmp/*.AppImage ./$APPNAME-$VERSION-x86_64.AppImage
+mv ./tmp/*.AppImage ./$APPNAME-"$VERSION"-i386.AppImage
