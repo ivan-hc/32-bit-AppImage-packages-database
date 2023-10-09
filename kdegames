@@ -72,10 +72,9 @@ Name=kdegames
 Exec=AppRun
 Icon=kpat
 Type=Application
-Categories=Game;" >> $APP.desktop
-mv ./$APP.desktop ./$APP/$APP.AppDir
+Categories=Game;" >> ./$APP/$APP.AppDir/$APP.desktop
 
 # ...EXPORT THE APPDIR TO AN APPIMAGE!
 ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
 cd ..
-mv ./tmp/*.AppImage ./$APPNAME-"$VERSION"-i386.AppImage
+mv ./tmp/*.AppImage ./Kdegames_"$VERSION"-i386.AppImage
