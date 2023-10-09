@@ -1,6 +1,7 @@
 #!/bin/sh
 
 APP=gimp
+
 mkdir tmp;
 cd tmp;
 
@@ -40,6 +41,9 @@ wget https://raw.githubusercontent.com/ivan-hc/GIMP-appimage/main/AppRun -P ./$A
 sed -i 's/x86_64/i386/g' ./$APP/$APP.AppDir/AppRun
 sed -i 's/64/x32/g' ./$APP/$APP.AppDir/AppRun
 chmod a+x ./$APP/$APP.AppDir/AppRun
+
+# ..IMPORT THE DESKTOP FILE TO THE ROOT OF THE APPDIR...
+cp ./$APP/$APP.AppDir/usr/share/applications/*$APP* ./$APP/$APP.AppDir/$APP.desktop
 
 ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
 cd ..
