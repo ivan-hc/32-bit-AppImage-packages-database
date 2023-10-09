@@ -7,7 +7,7 @@ cd tmp;
 
 # DOWNLOADING THE DEPENDENCIES
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-i686.AppImage -O appimagetool
-wget https://raw.githubusercontent.com/ivan-hc/pkg2appimage-32bit/master/pkg2appimage
+wget https://github.com/ivan-hc/pkg2appimage-32bit/releases/download/continuous/pkg2appimage-i386.AppImage -O pkg2appimage
 chmod a+x ./appimagetool ./pkg2appimage
 
 DEBRELEASE="oldstable"
@@ -33,7 +33,7 @@ ingredients:
   packages:
     - chromium" >> recipe.yml;
 
-./pkg2appimage ./recipe.yml;
+ARCH=i386 ./pkg2appimage ./recipe.yml;
 
 # ...REPLACING THE EXISTING APPRUN WITH A CUSTOM ONE...
 rm -R -f ./$APP/$APP.AppDir/AppRun
@@ -53,9 +53,9 @@ sed -i 's/64/x32/g' ./$APP/$APP.AppDir/AppRun
 chmod a+x ./$APP/$APP.AppDir/AppRun
 
 # ..IMPORT THE DESKTOP FILE TO THE ROOT OF THE APPDIR...
-cp -R ./$APP/$APP.AppDir/usr/share/applications/*$APP* ./$APP/$APP.AppDir/$APP.desktop
+cp ./$APP/$APP.AppDir/usr/share/applications/$APP.desktop ./$APP/$APP.AppDir/$APP.desktop
 
 # ...EXPORT THE APPDIR TO AN APPIMAGE!
-ARCH=i368 ./appimagetool -n ./$APP/$APP.AppDir
+ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
 cd ..;
 mv ./tmp/*.AppImage ./Chromium_Web_Browser-$VERSION-i386.AppImage
