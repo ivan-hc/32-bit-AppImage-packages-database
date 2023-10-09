@@ -13,21 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: uraimo/run-on-arch-action@v2
-      name: Run commands
-      id: runcmd
-      with:
-        arch: i386
-        distro: ubuntu18.04
 
     - name: build
       if: always()
       run: |
-        #sudo dpkg --add-architecture i386
+        sudo dpkg --add-architecture i386
         sudo apt update
-        sudo apt install libfuse2
-        #sudo apt install libfuse2:i386 libc6:i386 libncurses5:i386 libstdc++6:i386
-        #sudo apt install binutils-multiarch
+        sudo apt install libfuse2 libfuse2:i386 libc6:i386 libncurses5:i386 libstdc++6:i386
+        sudo apt install binutils-multiarch
         wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/chromium
         chmod a+x ./chromium
         ./chromium
