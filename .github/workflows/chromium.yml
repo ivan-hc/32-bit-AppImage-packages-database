@@ -21,7 +21,7 @@ jobs:
         sudo dpkg --add-architecture i386
         sudo apt update
         sudo apt install libfuse2 libfuse2:i386 libc6:i386 libncurses5:i386 libstdc++6:i386
-        sudo apt install binutils-multiarch
+        sudo apt install binutils-multiarch libc6-i386 binutils-i686-gnu binutils-i686-linux-gnu
         wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/$APP
         chmod a+x ./$APP
         ./$APP
