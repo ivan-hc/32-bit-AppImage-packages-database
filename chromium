@@ -52,6 +52,9 @@ sed -i 's/x86_64/i386/g' ./$APP/$APP.AppDir/AppRun
 sed -i 's/64/x32/g' ./$APP/$APP.AppDir/AppRun
 chmod a+x ./$APP/$APP.AppDir/AppRun
 
+# ..IMPORT THE DESKTOP FILE TO THE ROOT OF THE APPDIR...
+cp ./$APP/$APP.AppDir/usr/share/applications/$APP.desktop ./$APP/$APP.AppDir/$APP.desktop
+
 # ...EXPORT THE APPDIR TO AN APPIMAGE!
 ARCH=i686 ./appimagetool -n ./$APP/$APP.AppDir
 cd ..;
