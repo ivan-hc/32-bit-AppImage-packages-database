@@ -17,13 +17,17 @@ jobs:
     - name: build
       if: always()
       run: |
+        APP=chromium
         sudo dpkg --add-architecture i386
         sudo apt update
         sudo apt install libfuse2 libfuse2:i386 libc6:i386 libncurses5:i386 libstdc++6:i386
         sudo apt install binutils-multiarch
-        wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/chromium
-        chmod a+x ./chromium
-        ./chromium
+        wget https://raw.githubusercontent.com/ivan-hc/32-bit-AppImage-packages-database/main/$APP
+        chmod a+x ./$APP
+        ./$APP
+        cp ./tmp/$APP/$APP.AppDir/usr/share/applications/*$APP* ./tmp/$APP/$APP.AppDir/$APP.desktop
+        mv ./tmp/$APP/$APP.AppDir/usr/share/icons/hicolor/128x128/apps/*$APP* ./tmp/$APP/$APP.AppDir/$APP.svg
+        ARCH=i386 ./tmp/appimagetool -n ./tmp/$APP/$APP.AppDir
         mkdir dist
         mv *AppImage dist/
     - uses: gautamkrishnar/keepalive-workflow@v1
