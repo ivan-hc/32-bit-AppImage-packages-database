@@ -7,7 +7,7 @@ cd tmp;
 
 # DOWNLOADING THE DEPENDENCIES
 wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-i686.AppImage -O appimagetool
-wget -c $(wget -q https://api.github.com/repos/AppImageCommunity/pkg2appimage/releases -O - | grep "pkg2appimage-.*-x86_64.AppImage" | grep browser_download_url | head -n 1 | cut -d '"' -f 4) -O pkg2appimage
+wget https://raw.githubusercontent.com/ivan-hc/pkg2appimage-32bit/master/pkg2appimage
 chmod a+x ./appimagetool ./pkg2appimage
 
 DEBRELEASE="oldstable"
