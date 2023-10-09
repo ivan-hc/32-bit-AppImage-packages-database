@@ -16,7 +16,7 @@ GIMP=$(echo $(wget -q https://packages.debian.org/stable/i386/gimp/download -O -
 GIMP_DATA=$(echo $(wget -q https://packages.debian.org/stable/all/gimp-data/download -O - | grep "gimp-data_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
 libgimp=$(echo $(wget -q https://packages.debian.org/stable/gimp -O - | grep libgimp | head -1 | grep -o -P '(?<=">).*(?=</a>)'))
 LIBGIMP=$(echo $(wget -q https://packages.debian.org/stable/i386/$libgimp/download -O - | grep "$libgimp""_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
-VERSION=$(echo $(echo $GIMP | cut -c 6- | rev | cut -c 11- | rev))
+VERSION=$(echo $(wget -q https://packages.debian.org/stable/i386/gimp/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=gimp_).*(?=_i386)'))
 echo "app: gimp
 binpatch: true
 
@@ -62,4 +62,4 @@ cp ./$APP/$APP.AppDir/usr/share/applications/*$APP* ./$APP/$APP.AppDir/$APP.desk
 
 ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
 cd ..
-mv ./tmp/*.AppImage ./GNU-Image-Manipulation-Program_"$VERSION"-x86_64.AppImage 
+mv ./tmp/*.AppImage ./GNU-Image-Manipulation-Program_"$VERSION"-i386.AppImage 
