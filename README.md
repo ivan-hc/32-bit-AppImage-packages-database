@@ -8,7 +8,7 @@ You'll find more details on the aforementioned application managers and various 
 
 ---------------------------------
 
-## Install and update it with ease
+## Install and update them with ease
 
 I wrote two bash scripts to install and manage the applications: [AM](https://github.com/ivan-hc/AM-Application-Manager) and [AppMan](https://github.com/ivan-hc/AppMan). Their dual existence is based on the needs of the end user.
 
