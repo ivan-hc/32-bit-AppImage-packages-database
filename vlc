@@ -19,7 +19,7 @@ ingredients:
   dist: stable
   sources:
     - deb http://ftp.debian.org/debian/ stable main contrib non-free
-    - deb http://security.debian.org/stable-security/ $DEBRELEASE-security main contrib non-free
+    - deb http://security.debian.org/stable-security/ stable-security main contrib non-free
     - deb http://ftp.debian.org/debian/ stable-updates main contrib non-free
   packages:
     - vlc
