@@ -6,7 +6,7 @@ mkdir tmp;
 cd tmp;
 
 # DOWNLOADING THE DEPENDENCIES
-wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-i686.AppImage -O appimagetool
+wget -q $(wget -q https://api.github.com/repos/probonopd/go-appimage/releases -O - | grep -v zsync | grep -i continuous | grep -i appimagetool | grep -i i686 | grep browser_download_url | cut -d '"' -f 4 | head -1) -O appimagetool
 wget https://github.com/ivan-hc/pkg2appimage-32bit/releases/download/continuous/pkg2appimage-i386.AppImage -O pkg2appimage
 chmod a+x ./appimagetool ./pkg2appimage
 
@@ -60,6 +60,6 @@ chmod a+x ./$APP/$APP.AppDir/AppRun
 # ..IMPORT THE DESKTOP FILE TO THE ROOT OF THE APPDIR...
 cp ./$APP/$APP.AppDir/usr/share/applications/*$APP* ./$APP/$APP.AppDir/$APP.desktop
 
-ARCH=i386 ./appimagetool -n ./$APP/$APP.AppDir
+ARCH=i386 VERSION=$(./appimagetool -v | grep -o '[[:digit:]]*') ./appimagetool -s ./$APP/$APP.AppDir
 cd ..
 mv ./tmp/*.AppImage ./GNU-Image-Manipulation-Program_"$VERSION"-i386.AppImage 
