@@ -24,6 +24,12 @@ ingredients:
     - deb http://ftp.debian.org/debian/ $DEBRELEASE main contrib non-free
     - deb http://security.debian.org/$DEBRELEASE-security/ $DEBRELEASE-security main contrib non-free
     - deb http://ftp.debian.org/debian/ $DEBRELEASE-updates main contrib non-free
+  script:
+    - wget http://security.debian.org/debian-security/pool/updates/main/c/chromium/$(wget -q https://packages.debian.org/$DEBRELEASE/i386/chromium/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/c/chromium/$(wget -q https://packages.debian.org/$DEBRELEASE/i386/chromium-common/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/c/chromium/$(wget -q https://packages.debian.org/$DEBRELEASE/i386/chromium-driver/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/c/chromium/$(wget -q https://packages.debian.org/$DEBRELEASE/all/chromium-l10n/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/c/chromium/$(wget -q https://packages.debian.org/$DEBRELEASE/i386/chromium-sandbox/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
   packages:
     - chromium
     - chromium-common
