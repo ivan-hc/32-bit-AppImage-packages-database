@@ -7,7 +7,7 @@ permissions:
 jobs:
   cronjob-based-github-action:
     name: Cronjob based github action
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: gautamkrishnar/keepalive-workflow@v2

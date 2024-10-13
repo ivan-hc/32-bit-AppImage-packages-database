@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
 
@@ -38,7 +38,7 @@ jobs:
   release:
       needs: [build]
       permissions: write-all
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-22.04
 
       steps:
         - uses: actions/download-artifact@v4.1.8
