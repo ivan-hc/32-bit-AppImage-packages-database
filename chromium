@@ -11,7 +11,6 @@ wget https://github.com/ivan-hc/pkg2appimage-32bit/releases/download/continuous/
 chmod a+x ./appimagetool ./pkg2appimage
 
 DEBRELEASE="stable"
-VERSION=$(echo $(wget -q https://packages.debian.org/$DEBRELEASE/i386/chromium/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=chromium_).*(?=_i386)'))
 
 # CREATING THE APPIMAGE: APPDIR FROM A RECIPE...
 echo "app: chromium
@@ -38,6 +37,15 @@ ingredients:
     - chromium-sandbox" >> recipe.yml;
 
 ARCH=i386 ./pkg2appimage ./recipe.yml;
+
+# VERSION
+MAIN_DEB=$(find . -type f -name "$APP\_*.deb" | head -1 | sed 's:.*/::')
+if test -f ./"$APP"/"$MAIN_DEB"; then
+	ar x ./"$APP"/"$MAIN_DEB" && tar xf ./control.tar.* && rm -f ./control.tar.* ./data.tar.* || exit 1
+	VERSION=$(grep Version 0<control | cut -c 10-)
+else
+	VERSION="test"
+fi
 
 # ...REPLACING THE EXISTING APPRUN WITH A CUSTOM ONE...
 rm -R -f ./$APP/$APP.AppDir/AppRun
