@@ -1,4 +1,4 @@
-https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/chromium/Chromium_Web_Browser-135.0.7049.84-1.deb12u1-i386.AppImage
 https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/vlc/VLC-media-player_3.0.21-0%2Bdeb12u1-i386.AppImage
 https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/kdegames/Kdegames_22.12.3%2B5.142-i386.AppImage
-https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/gimp/GNU-Image-Manipulation-Program_2.10.34-1%2Bdeb12u2-i386.AppImage
+https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/gimp/GNU-Image-Manipulation-Program_-i386.AppImage
+https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/download/chromium/Chromium_Web_Browser-135.0.7049.84-1.deb12u1-i386.AppImage
