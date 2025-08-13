@@ -11,27 +11,27 @@ wget https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/downl
 chmod a+x ./appimagetool ./pkg2appimage
 
 # CREATING THE APPIMAGE: APPDIR FROM A RECIPE...
-VERSION=$(echo $(wget -q https://packages.debian.org/stable/i386/vlc/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=vlc_).*(?=_i386)'))
+VERSION=$(echo $(wget -q https://packages.debian.org/oldstable/i386/vlc/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=vlc_).*(?=_i386)'))
 echo "app: vlc
 binpatch: true
 
 ingredients:
-  dist: stable
+  dist: oldstable
   sources:
-    - deb http://ftp.debian.org/debian/ stable main contrib non-free
-    - deb http://security.debian.org/stable-security/ stable-security main contrib non-free
-    - deb http://ftp.debian.org/debian/ stable-updates main contrib non-free
+    - deb http://ftp.debian.org/debian/ oldstable main contrib non-free
+    - deb http://security.debian.org/oldstable-security/ oldstable-security main contrib non-free
+    - deb http://ftp.debian.org/debian/ oldstable-updates main contrib non-free
   script:
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/vlc/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/libvlc5/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/libvlc-bin/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/libvlccore9/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/vlc-bin/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/all/vlc-data/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/all/vlc-l10n/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/vlc-plugin-base/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/vlc-plugin-qt/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
-    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/stable/i386/vlc-plugin-video-output/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/vlc/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/libvlc5/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/libvlc-bin/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/libvlccore9/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/vlc-bin/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/all/vlc-data/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/all/vlc-l10n/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/vlc-plugin-base/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/vlc-plugin-qt/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
+    - wget http://security.debian.org/debian-security/pool/updates/main/v/vlc/$(wget -q https://packages.debian.org/oldstable/i386/vlc-plugin-video-output/download -O - | grep Download | head -1 | grep -o -P '(?<=Selection -- ).*(?=</title)')
   packages:
     - vlc
     - vlc-l10n

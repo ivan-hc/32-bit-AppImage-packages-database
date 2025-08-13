@@ -11,12 +11,12 @@ wget https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/downl
 chmod a+x ./appimagetool ./pkg2appimage
 
 # CREATING THE APPIMAGE
-DEBIANBRANCH=stable
-GIMP=$(echo $(wget -q https://packages.debian.org/stable/i386/gimp/download -O - | grep "gimp_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
-GIMP_DATA=$(echo $(wget -q https://packages.debian.org/stable/all/gimp-data/download -O - | grep "gimp-data_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
-libgimp=$(echo $(wget -q https://packages.debian.org/stable/gimp -O - | grep libgimp | head -1 | grep -o -P '(?<=">).*(?=</a>)'))
-LIBGIMP=$(echo $(wget -q https://packages.debian.org/stable/i386/$libgimp/download -O - | grep "$libgimp""_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
-VERSION=$(echo $(wget -q https://packages.debian.org/stable/i386/gimp/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=gimp_).*(?=_i386)'))
+DEBIANBRANCH=oldstable
+GIMP=$(echo $(wget -q https://packages.debian.org/oldstable/i386/gimp/download -O - | grep "gimp_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
+GIMP_DATA=$(echo $(wget -q https://packages.debian.org/oldstable/all/gimp-data/download -O - | grep "gimp-data_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
+libgimp=$(echo $(wget -q https://packages.debian.org/oldstable/gimp -O - | grep libgimp | head -1 | grep -o -P '(?<=">).*(?=</a>)'))
+LIBGIMP=$(echo $(wget -q https://packages.debian.org/oldstable/i386/$libgimp/download -O - | grep "$libgimp""_" | tail -1 | grep -o -P '(?<=<kbd>).*(?=</kbd>)'))
+VERSION=$(echo $(wget -q https://packages.debian.org/oldstable/i386/gimp/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=gimp_).*(?=_i386)'))
 echo "app: gimp
 binpatch: true
 

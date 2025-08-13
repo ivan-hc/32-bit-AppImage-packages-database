@@ -11,17 +11,17 @@ wget https://github.com/ivan-hc/32-bit-AppImage-packages-database/releases/downl
 chmod a+x ./appimagetool ./pkg2appimage
 
 # CREATING THE APPIMAGE: APPDIR FROM A RECIPE...
-VERSION=$(echo $(wget -q https://packages.debian.org/stable/i386/kdegames/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=kdegames_).*(?=_i386)'))
+VERSION=$(echo $(wget -q https://packages.debian.org/oldstable/i386/kdegames/download -O - | grep ".deb" | head -1 | grep -o -P '(?<=kdegames_).*(?=_i386)'))
 echo "app: kdegames
 binpatch: true
 
 ingredients:
-  dist: stable
+  dist: oldstable
   sources:
-    - deb http://deb.debian.org/debian/ stable main contrib non-free
-    - deb http://deb.debian.org/debian-security/ stable-security main contrib non-free
-    - deb http://deb.debian.org/debian stable-updates main contrib non-free
-    - deb http://deb.debian.org/debian stable-backports main contrib non-free
+    - deb http://deb.debian.org/debian/ oldstable main contrib non-free
+    - deb http://deb.debian.org/debian-security/ oldstable-security main contrib non-free
+    - deb http://deb.debian.org/debian oldstable-updates main contrib non-free
+    - deb http://deb.debian.org/debian oldstable-backports main contrib non-free
   packages:
     - kdegames
     - kde-games-core
